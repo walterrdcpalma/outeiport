@@ -3,7 +3,12 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\walte\\\\Documents\\\\outeiport\" -Force)",
-      "Bash(Select-Object Name, PSIsContainer)"
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet add *)",
+      "Bash(npm run *)",
+      "Bash(dotnet run *)",
+      "Bash(ping -n 4 127.0.0.1)"
     ]
   }
 }
