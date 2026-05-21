@@ -24,7 +24,7 @@ public record CarData(
     string? Transmission);
 
 public record ISVResult(
-    decimal ComponenteCilindrada,
-    decimal ComponenteAmbiental,
-    decimal CoeficienteDesvalorizacao,
+    decimal DisplacementComponent,
+    decimal EnvironmentalComponent,
+    decimal DepreciationCoefficient,
     decimal Total);

@@ -7,30 +7,28 @@ public class ISVCalculator
         if (car.FuelType == FuelType.Electric)
             return new ISVResult(0m, 0m, 1.00m, 0m);
 
-        var cilindradaTable = car.FuelType == FuelType.Diesel
+        var displacementTable = car.FuelType == FuelType.Diesel
             ? ISVTables.CilindradaDiesel
             : ISVTables.CilindradaGasolina;
 
-        var componenteCilindrada = CalculateComponent(cilindradaTable, car.Displacement);
-        var componenteAmbiental  = CalculateComponent(ISVTables.Ambiental, car.Co2);
+        var displacementComponent  = CalculateComponent(displacementTable, car.Displacement);
+        var environmentalComponent = CalculateComponent(ISVTables.Ambiental, car.Co2);
 
-        // Plug-in hybrids get a 25% reduction on the environmental component
         if (car.FuelType == FuelType.PlugInHybrid)
-            componenteAmbiental *= 0.75m;
+            environmentalComponent *= 0.75m;
 
-        var coeficiente = GetDepreciationCoefficient(car.Year, car.Month);
-        var total = Math.Round((componenteCilindrada + componenteAmbiental) * coeficiente, 2);
+        var depreciationCoefficient = GetDepreciationCoefficient(car.Year, car.Month);
+        var total = Math.Round((displacementComponent + environmentalComponent) * depreciationCoefficient, 2);
 
         return new ISVResult(
-            Math.Round(componenteCilindrada, 2),
-            Math.Round(componenteAmbiental, 2),
-            coeficiente,
+            Math.Round(displacementComponent, 2),
+            Math.Round(environmentalComponent, 2),
+            depreciationCoefficient,
             total);
     }
 
     private static decimal CalculateComponent(TabelaEscalao[] table, int value)
     {
-        // Find the highest escalao whose LimiteInferior is <= value
         var escalao = table.LastOrDefault(e => e.LimiteInferior <= value) ?? table[0];
         return escalao.ParcelaFixa + (value - escalao.LimiteInferior) * escalao.TaxaUnitaria;
     }

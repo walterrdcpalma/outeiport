@@ -10,15 +10,15 @@ export default function SuccessMessage({ onReset }: Props) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       </div>
-      <h2 className="text-2xl font-bold text-slate-800">Request sent!</h2>
+      <h2 className="text-2xl font-bold text-slate-800">Pedido enviado!</h2>
       <p className="text-slate-500 max-w-sm mx-auto">
-        We've received your quote request and will be in touch shortly.
+        Recebemos o teu pedido de proposta e entraremos em contacto brevemente.
       </p>
       <button
         onClick={onReset}
         className="mt-4 text-blue-600 hover:underline text-sm font-medium"
       >
-        Submit another request
+        Enviar outro pedido
       </button>
     </div>
   )

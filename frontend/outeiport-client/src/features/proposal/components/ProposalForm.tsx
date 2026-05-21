@@ -1,22 +1,22 @@
 import { useForm } from 'react-hook-form'
-import type { PropostaRequest } from '../../../types/api'
+import type { ProposalRequest } from '../../../types/api'
 
 interface Props {
-  onSubmit: (data: PropostaRequest) => void
+  onSubmit: (data: ProposalRequest) => void
   isLoading: boolean
 }
 
-export default function PropostaForm({ onSubmit, isLoading }: Props) {
-  const { register, handleSubmit, formState: { errors } } = useForm<PropostaRequest>()
+export default function ProposalForm({ onSubmit, isLoading }: Props) {
+  const { register, handleSubmit, formState: { errors } } = useForm<ProposalRequest>()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <Field label="Full name" error={errors.nome?.message} required>
+      <Field label="Nome completo" error={errors.name?.message} required>
         <input
           type="text"
           placeholder="João Silva"
           className="input"
-          {...register('nome', { required: 'Name is required' })}
+          {...register('name', { required: 'O nome é obrigatório' })}
         />
       </Field>
 
@@ -26,36 +26,36 @@ export default function PropostaForm({ onSubmit, isLoading }: Props) {
           placeholder="joao@email.com"
           className="input"
           {...register('email', {
-            required: 'Email is required',
-            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Invalid email' },
+            required: 'O email é obrigatório',
+            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Email inválido' },
           })}
         />
       </Field>
 
-      <Field label="Phone" error={errors.telefone?.message} required>
+      <Field label="Telefone" error={errors.phone?.message} required>
         <input
           type="tel"
           placeholder="+351 9XX XXX XXX"
           className="input"
-          {...register('telefone', { required: 'Phone is required' })}
+          {...register('phone', { required: 'O telefone é obrigatório' })}
         />
       </Field>
 
-      <Field label="Car link (optional)" error={errors.linkCarro?.message}>
+      <Field label="Link do carro (opcional)" error={errors.carLink?.message}>
         <input
           type="url"
           placeholder="https://suchen.mobile.de/..."
           className="input"
-          {...register('linkCarro')}
+          {...register('carLink')}
         />
       </Field>
 
-      <Field label="Message" error={errors.mensagem?.message} required>
+      <Field label="Mensagem" error={errors.message?.message} required>
         <textarea
           rows={4}
-          placeholder="Tell us about the car you're looking to import..."
+          placeholder="Descreve o carro que pretendes importar..."
           className="input resize-none"
-          {...register('mensagem', { required: 'Message is required' })}
+          {...register('message', { required: 'A mensagem é obrigatória' })}
         />
       </Field>
 
@@ -67,10 +67,10 @@ export default function PropostaForm({ onSubmit, isLoading }: Props) {
         {isLoading ? (
           <>
             <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            Sending…
+            A enviar…
           </>
         ) : (
-          'Send Quote Request'
+          'Enviar Pedido'
         )}
       </button>
     </form>

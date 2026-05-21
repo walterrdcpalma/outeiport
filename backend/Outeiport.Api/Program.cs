@@ -3,7 +3,7 @@ using Outeiport.Api.Infrastructure.Email;
 using Outeiport.Api.Infrastructure.Scrapers;
 using Outeiport.Api.Infrastructure.ISV;
 using Outeiport.Api.Features.Simulate;
-using Outeiport.Api.Features.Proposta;
+using Outeiport.Api.Features.Proposal;
 using Resend;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +43,6 @@ app.UseExceptionHandler();
 app.UseCors("Frontend");
 
 app.MapSimulateEndpoints();
-app.MapPropostaEndpoints();
+app.MapProposalEndpoints();
 
 app.Run();

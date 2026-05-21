@@ -1,12 +1,12 @@
 using FluentValidation;
 
-namespace Outeiport.Api.Features.Proposta;
+namespace Outeiport.Api.Features.Proposal;
 
-public class CreatePropostaCommandValidator : AbstractValidator<CreatePropostaCommand>
+public class CreateProposalCommandValidator : AbstractValidator<CreateProposalCommand>
 {
-    public CreatePropostaCommandValidator()
+    public CreateProposalCommandValidator()
     {
-        RuleFor(x => x.Nome)
+        RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Name is required.")
             .MaximumLength(100);
 
@@ -14,15 +14,15 @@ public class CreatePropostaCommandValidator : AbstractValidator<CreatePropostaCo
             .NotEmpty().WithMessage("Email is required.")
             .EmailAddress().WithMessage("Invalid email address.");
 
-        RuleFor(x => x.Telefone)
+        RuleFor(x => x.Phone)
             .NotEmpty().WithMessage("Phone number is required.")
             .Matches(@"^\+?[\d\s\-()]{7,20}$").WithMessage("Invalid phone number.");
 
-        RuleFor(x => x.LinkCarro)
+        RuleFor(x => x.CarLink)
             .Must(url => url is null || Uri.TryCreate(url, UriKind.Absolute, out _))
             .WithMessage("Car link must be a valid URL.");
 
-        RuleFor(x => x.Mensagem)
+        RuleFor(x => x.Message)
             .NotEmpty().WithMessage("Message is required.")
             .MaximumLength(2000);
     }

@@ -4,7 +4,7 @@ import Header from './shared/components/Header'
 import Footer from './shared/components/Footer'
 import HomePage from './features/home/HomePage'
 import SimulatePage from './features/simulate/pages/SimulatePage'
-import PropostaPage from './features/proposta/pages/PropostaPage'
+import ProposalPage from './features/proposal/pages/ProposalPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +22,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/simulador" element={<SimulatePage />} />
-              <Route path="/proposta" element={<PropostaPage />} />
+              <Route path="/proposta" element={<ProposalPage />} />
             </Routes>
           </main>
           <Footer />

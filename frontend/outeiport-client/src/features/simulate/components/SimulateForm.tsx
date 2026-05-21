@@ -13,17 +13,17 @@ export default function SimulateForm({ onSubmit, isLoading }: Props) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="url" className="block text-sm font-medium text-slate-700 mb-1">
-          mobile.de listing URL
+          Link do anúncio mobile.de
         </label>
         <input
           id="url"
           type="url"
-          placeholder="https://suchen.mobile.de/fahrzeuge/details.html?id=..."
+          placeholder="https://suchen.mobile.de/auto-inserat/..."
           className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           {...register('url', {
-            required: 'URL is required',
+            required: 'O link é obrigatório',
             validate: (v) =>
-              v.includes('mobile.de') || 'Must be a valid mobile.de link',
+              v.includes('mobile.de') || 'Deve ser um link válido do mobile.de',
           })}
         />
         {errors.url && (
@@ -39,10 +39,10 @@ export default function SimulateForm({ onSubmit, isLoading }: Props) {
         {isLoading ? (
           <>
             <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            Scraping listing…
+            A calcular…
           </>
         ) : (
-          'Calculate ISV'
+          'Calcular ISV'
         )}
       </button>
     </form>

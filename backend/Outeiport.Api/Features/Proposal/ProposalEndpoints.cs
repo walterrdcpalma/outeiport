@@ -1,15 +1,15 @@
 using FluentValidation;
 using MediatR;
 
-namespace Outeiport.Api.Features.Proposta;
+namespace Outeiport.Api.Features.Proposal;
 
-public static class PropostaEndpoints
+public static class ProposalEndpoints
 {
-    public static IEndpointRouteBuilder MapPropostaEndpoints(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapProposalEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapPost("/api/proposta", async (
-            CreatePropostaCommand command,
-            IValidator<CreatePropostaCommand> validator,
+            CreateProposalCommand command,
+            IValidator<CreateProposalCommand> validator,
             IMediator mediator,
             CancellationToken ct) =>
         {
@@ -20,7 +20,7 @@ public static class PropostaEndpoints
             try
             {
                 await mediator.Send(command, ct);
-                return Results.Ok(new { message = "Proposta submitted successfully." });
+                return Results.Ok(new { message = "Proposal submitted successfully." });
             }
             catch (Exception ex)
             {
@@ -30,8 +30,8 @@ public static class PropostaEndpoints
                     statusCode: 500);
             }
         })
-        .WithName("CreateProposta")
-        .WithTags("Proposta");
+        .WithName("CreateProposal")
+        .WithTags("Proposal");
 
         return app;
     }

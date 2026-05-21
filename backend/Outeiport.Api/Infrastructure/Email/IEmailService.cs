@@ -1,13 +1,13 @@
 namespace Outeiport.Api.Infrastructure.Email;
 
-public record PropostaEmailData(
-    string Nome,
+public record QuoteEmailData(
+    string Name,
     string Email,
-    string Telefone,
-    string? LinkCarro,
-    string Mensagem);
+    string Phone,
+    string? CarLink,
+    string Message);
 
 public interface IEmailService
 {
-    Task SendPropostaAsync(PropostaEmailData data, CancellationToken ct = default);
+    Task SendQuoteRequestAsync(QuoteEmailData data, CancellationToken ct = default);
 }

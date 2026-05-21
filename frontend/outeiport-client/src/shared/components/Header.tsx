@@ -17,7 +17,7 @@ export default function Header() {
                 : 'hover:text-blue-300 transition-colors'
             }
           >
-            ISV Simulator
+            Simulador ISV
           </NavLink>
           <NavLink
             to="/proposta"
@@ -27,7 +27,7 @@ export default function Header() {
                 : 'bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg transition-colors'
             }
           >
-            Request Quote
+            Pedir Proposta
           </NavLink>
         </nav>
       </div>

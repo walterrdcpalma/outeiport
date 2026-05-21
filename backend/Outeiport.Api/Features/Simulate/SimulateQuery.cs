@@ -16,10 +16,10 @@ public record SimulateResponse(
     int PowerKw,
     decimal PriceEur,
     string? Transmission,
-    ISVResultDto Isv);
+    IsvBreakdown Isv);
 
-public record ISVResultDto(
-    decimal ComponenteCilindrada,
-    decimal ComponenteAmbiental,
-    decimal CoeficienteDesvalorizacao,
+public record IsvBreakdown(
+    decimal DisplacementComponent,
+    decimal EnvironmentalComponent,
+    decimal DepreciationCoefficient,
     decimal Total);

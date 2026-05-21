@@ -8,7 +8,17 @@
       "Bash(dotnet add *)",
       "Bash(npm run *)",
       "Bash(dotnet run *)",
-      "Bash(ping -n 4 127.0.0.1)"
+      "Bash(ping -n 4 127.0.0.1)",
+      "Bash(taskkill /F /IM \"Outeiport.Api.exe\")",
+      "Bash(Start-Sleep -Seconds 1)",
+      "Bash(taskkill //F //IM \"Outeiport.Api.exe\")",
+      "Bash(ping -n 5 127.0.0.1)",
+      "Bash(curl -s -X POST http://localhost:5076/api/simulate -H \"Content-Type: application/json\" -d \"{\\\\\"url\\\\\":\\\\\"https://suchen.mobile.de/auto-inserat/land-rover-range-rover-evoque-d200-s-awd-automatik-tempom-a-freiburg/454166360.html\\\\\"}\")",
+      "Bash(grep -E \"\\\\.\\(tsx|ts|css|json\\)$\")",
+      "Bash(curl -s -X POST http://localhost:5076/api/simulate -H 'Content-Type: application/json' -d '{\"url\":\"https://suchen.mobile.de/auto-inserat/land-rover-range-rover-evoque/123.html\"}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X POST http://localhost:5076/api/proposta -H 'Content-Type: application/json' -d '{\"name\":\"João Silva\",\"email\":\"joao@test.com\",\"phone\":\"+351912345678\",\"message\":\"Quero importar um carro\"}')",
+      "Bash(npx tsc *)"
     ]
   }
 }

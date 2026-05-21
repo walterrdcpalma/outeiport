@@ -32,10 +32,10 @@ public class SimulateQueryHandler : IRequestHandler<SimulateQuery, SimulateRespo
             car.PowerKw,
             car.PriceEur,
             car.Transmission,
-            new ISVResultDto(
-                isv.ComponenteCilindrada,
-                isv.ComponenteAmbiental,
-                isv.CoeficienteDesvalorizacao,
+            new IsvBreakdown(
+                isv.DisplacementComponent,
+                isv.EnvironmentalComponent,
+                isv.DepreciationCoefficient,
                 isv.Total));
     }
 }

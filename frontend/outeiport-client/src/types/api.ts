@@ -2,10 +2,10 @@ export interface SimulateRequest {
   url: string
 }
 
-export interface ISVBreakdown {
-  componenteCilindrada: number
-  componenteAmbiental: number
-  coeficienteDesvalorizacao: number
+export interface IsvBreakdown {
+  displacementComponent: number
+  environmentalComponent: number
+  depreciationCoefficient: number
   total: number
 }
 
@@ -21,15 +21,15 @@ export interface SimulateResponse {
   powerKw: number
   priceEur: number
   transmission?: string
-  isv: ISVBreakdown
+  isv: IsvBreakdown
 }
 
-export interface PropostaRequest {
-  nome: string
+export interface ProposalRequest {
+  name: string
   email: string
-  telefone: string
-  linkCarro?: string
-  mensagem: string
+  phone: string
+  carLink?: string
+  message: string
 }
 
 export interface ApiError {
