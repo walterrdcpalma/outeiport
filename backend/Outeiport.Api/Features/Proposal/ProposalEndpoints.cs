@@ -7,7 +7,7 @@ public static class ProposalEndpoints
 {
     public static IEndpointRouteBuilder MapProposalEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/proposta", async (
+        app.MapPost("/api/proposal", async (
             CreateProposalCommand command,
             IValidator<CreateProposalCommand> validator,
             IMediator mediator,

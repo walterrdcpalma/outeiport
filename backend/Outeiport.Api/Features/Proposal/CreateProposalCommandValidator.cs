@@ -7,23 +7,24 @@ public class CreateProposalCommandValidator : AbstractValidator<CreateProposalCo
     public CreateProposalCommandValidator()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Name is required.")
+            .NotEmpty().WithMessage("O nome é obrigatório.")
             .MaximumLength(100);
 
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("Email is required.")
-            .EmailAddress().WithMessage("Invalid email address.");
+            .NotEmpty().WithMessage("O email é obrigatório.")
+            .EmailAddress().WithMessage("Endereço de email inválido.");
 
         RuleFor(x => x.Phone)
-            .NotEmpty().WithMessage("Phone number is required.")
-            .Matches(@"^\+?[\d\s\-()]{7,20}$").WithMessage("Invalid phone number.");
+            .NotEmpty().WithMessage("O telefone é obrigatório.")
+            .Matches(@"^\+?[\d\s\-()]{7,20}$").WithMessage("Número de telefone inválido.");
 
         RuleFor(x => x.CarLink)
-            .Must(url => url is null || Uri.TryCreate(url, UriKind.Absolute, out _))
-            .WithMessage("Car link must be a valid URL.");
+            .NotEmpty().WithMessage("O link do carro é obrigatório.")
+            .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
+            .WithMessage("O link do carro deve ser um URL válido.");
 
         RuleFor(x => x.Message)
-            .NotEmpty().WithMessage("Message is required.")
+            .NotEmpty().WithMessage("A mensagem é obrigatória.")
             .MaximumLength(2000);
     }
 }

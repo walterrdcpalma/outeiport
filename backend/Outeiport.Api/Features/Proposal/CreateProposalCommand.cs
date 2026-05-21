@@ -6,5 +6,5 @@ public record CreateProposalCommand(
     string Name,
     string Email,
     string Phone,
-    string? CarLink,
+    string CarLink,
     string Message) : IRequest;

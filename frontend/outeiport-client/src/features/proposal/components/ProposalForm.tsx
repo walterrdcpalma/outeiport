@@ -41,12 +41,15 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         />
       </Field>
 
-      <Field label="Link do carro (opcional)" error={errors.carLink?.message}>
+      <Field label="Link do carro" error={errors.carLink?.message} required>
         <input
           type="url"
           placeholder="https://suchen.mobile.de/..."
           className="input"
-          {...register('carLink')}
+          {...register('carLink', {
+            required: 'O link do carro é obrigatório',
+            validate: (v) => !v || /^https?:\/\/.+/.test(v) || 'O link deve ser um URL válido',
+          })}
         />
       </Field>
 
