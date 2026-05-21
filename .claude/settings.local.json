@@ -20,7 +20,12 @@
       "Bash(curl -s -X POST http://localhost:5076/api/proposta -H 'Content-Type: application/json' -d '{\"name\":\"João Silva\",\"email\":\"joao@test.com\",\"phone\":\"+351912345678\",\"message\":\"Quero importar um carro\"}')",
       "Bash(npx tsc *)",
       "Bash(dotnet user-secrets *)",
-      "Bash(curl -s -X POST http://localhost:5076/api/proposta -H 'Content-Type: application/json' -d '{\"name\":\"Walter Palma\",\"email\":\"walterrdcpalma@gmail.com\",\"phone\":\"+351939718506\",\"carLink\":\"https://suchen.mobile.de/auto-inserat/land-rover/123.html\",\"message\":\"Teste de proposta\"}')"
+      "Bash(curl -s -X POST http://localhost:5076/api/proposta -H 'Content-Type: application/json' -d '{\"name\":\"Walter Palma\",\"email\":\"walterrdcpalma@gmail.com\",\"phone\":\"+351939718506\",\"carLink\":\"https://suchen.mobile.de/auto-inserat/land-rover/123.html\",\"message\":\"Teste de proposta\"}')",
+      "WebFetch(domain:services.mobile.de)",
+      "Bash(curl -s \"https://services.mobile.de/manual/index.html\")",
+      "Bash(curl -s \"https://services.mobile.de/docs/search-api.html\")",
+      "Bash(curl -s \"https://queue.importrust.com/api/propostas/get?request=https%3A%2F%2Fsuchen.mobile.de%2Fauto-inserat%2Fland-rover-range-rover-evoque-d200-s-awd-automatik-tempom-a-freiburg%2F454166360.html%3Flst%3Dp\")",
+      "Bash(curl -s -X POST http://localhost:5076/api/simulate -H 'Content-Type: application/json' -d '{\"url\":\"https://suchen.mobile.de/auto-inserat/land-rover-range-rover-evoque-d200-s-awd-automatik-tempom-a-freiburg/454166360.html?lst=p\"}')"
     ]
   }
 }

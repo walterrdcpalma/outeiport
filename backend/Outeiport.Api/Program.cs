@@ -22,7 +22,8 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
-builder.Services.AddSingleton<IMobileDeScraperService, MobileDeScraperService>();
+builder.Services.AddHttpClient<IMobileDeScraperService, MobileDeScraperService>(client =>
+    client.BaseAddress = new Uri("https://queue.importrust.com/"));
 builder.Services.AddSingleton<ISVCalculator>();
 
 builder.Services.AddOptions();
