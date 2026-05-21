@@ -1,0 +1,6 @@
+@Outeiport.Api_HostAddress = http://localhost:5076
+
+GET {{Outeiport.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

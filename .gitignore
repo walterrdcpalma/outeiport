@@ -1,0 +1,29 @@
+# Backend (.NET)
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.sln.docstates
+.vs/
+.vscode/
+
+# Frontend (Node)
+node_modules/
+dist/
+build/
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+*.code-workspace
+
+# Environment
+.env
+.env.local
