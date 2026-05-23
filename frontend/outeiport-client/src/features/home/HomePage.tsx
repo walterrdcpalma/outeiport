@@ -43,25 +43,37 @@ export default function HomePage() {
             </span>
           </Link>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <span className="text-[9px] tracking-[0.25em] text-white/20 uppercase">scroll</span>
+          <svg className="w-4 h-4 text-white/20 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </section>
 
       <HowItWorksSection />
 
-      {/* Feature cards */}
-      <section className="bg-dark py-20 px-6 border-t border-dark-border">
-        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-4">
-          <FeatureCard
-            title={t('home.feature_sim_title')}
-            description={t('home.feature_sim_desc')}
-            cta={t('home.feature_sim_cta')}
-            to="/simulador"
-          />
-          <FeatureCard
-            title={t('home.feature_prop_title')}
-            description={t('home.feature_prop_desc')}
-            cta={t('home.feature_prop_cta')}
-            to="/proposta"
-          />
+      {/* CTA final */}
+      <section className="bg-dark py-32 px-6 border-t border-dark-border text-center">
+        <div className="max-w-md mx-auto space-y-8">
+          <p className="text-[10px] tracking-[0.3em] text-white/25 uppercase">
+            {t('home.hero_kicker')}
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug">
+            Comece a sua<br />jornada connosco.
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-2">
+            <Link to="/simulador" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
+              <span>{t('home.cta_simulate')}</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+            <Link to="/proposta" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
+              <span>{t('home.cta_proposal')}</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -71,27 +83,6 @@ export default function HomePage() {
           {t('home.disclaimer')}
         </p>
       </section>
-    </div>
-  )
-}
-
-
-function FeatureCard({
-  title, description, cta, to,
-}: {
-  title: string; description: string; cta: string; to: string;
-}) {
-  return (
-    <div className="rounded-xl p-7 border border-dark-border bg-dark-surface space-y-4">
-      <h3 className="text-sm font-medium text-white/80">{title}</h3>
-      <p className="text-xs text-muted leading-relaxed font-light">{description}</p>
-      <Link
-        to={to}
-        className="inline-flex items-center gap-2 text-xs text-white/30 hover:text-white/60 transition-colors group"
-      >
-        <span>{cta}</span>
-        <span className="group-hover:translate-x-1 transition-transform">→</span>
-      </Link>
     </div>
   )
 }

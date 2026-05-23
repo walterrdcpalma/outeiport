@@ -2,51 +2,74 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
+const draw = (delay = 0, duration = 1.1) => ({
+  initial: { pathLength: 0, opacity: 0 },
+  animate: { pathLength: 1, opacity: 1 },
+  transition: { pathLength: { duration, delay, ease: [0.16, 1, 0.3, 1] as const }, opacity: { duration: 0.2, delay } },
+})
+
+const pop = (delay = 0) => ({
+  initial: { scale: 0, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { duration: 0.3, delay, ease: [0.16, 1, 0.3, 1] as const },
+})
+
 function ChatIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.path d="M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" {...draw(0, 1.3)} />
+      <motion.circle cx="8" cy="10" r=".6" fill="currentColor" {...pop(0.95)} />
+      <motion.circle cx="12" cy="10" r=".6" fill="currentColor" {...pop(1.1)} />
+      <motion.circle cx="16" cy="10" r=".6" fill="currentColor" {...pop(1.25)} />
     </svg>
   )
 }
 
 function DocumentIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" {...draw(0, 0.9)} />
+      <motion.path d="M13 3H11a2 2 0 00-2 2v0a2 2 0 002 2h2a2 2 0 002-2v0a2 2 0 00-2-2z" {...draw(0.65, 0.55)} />
+      <motion.path d="M9 12h6" {...draw(1.05, 0.35)} />
+      <motion.path d="M9 16h4" {...draw(1.3, 0.3)} />
     </svg>
   )
 }
 
 function CheckCircleIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.circle cx="12" cy="12" r="9" {...draw(0, 1.1)} />
+      <motion.path d="M8.5 12.5l2.5 2.5 4.5-5" {...draw(0.9, 0.5)} />
     </svg>
   )
 }
 
 function TruckIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-      <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.path d="M1 3h13v13H1z" {...draw(0, 0.9)} />
+      <motion.path d="M14 8h4l3 5v3h-7V8z" {...draw(0.75, 0.75)} />
+      <motion.circle cx="5.5" cy="18.5" r="2" {...pop(1.25)} />
+      <motion.circle cx="18.5" cy="18.5" r="2" {...pop(1.4)} />
     </svg>
   )
 }
 
 function ShieldIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.path d="M12 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016A11.955 11.955 0 0112 2.944z" {...draw(0, 1.3)} />
+      <motion.path d="M8.5 12.5l2.5 2.5 4.5-5" {...draw(1.1, 0.5)} />
     </svg>
   )
 }
 
 function KeyIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <motion.circle cx="8" cy="9" r="4" {...draw(0, 1.0)} />
+      <motion.path d="M12 13l8-1v2l-2 1v2l-2-.5V19l-2-1-2-2.5" {...draw(0.85, 0.85)} />
     </svg>
   )
 }
@@ -61,7 +84,6 @@ const steps = [
 ]
 
 export default function HowItWorksSection() {
-  const { t } = useTranslation()
   const [activeStep, setActiveStep] = useState(0)
 
   const handleInView = useCallback((index: number) => {
@@ -71,16 +93,6 @@ export default function HowItWorksSection() {
   return (
     <section className="bg-dark border-t border-dark-border">
       <div className="max-w-6xl mx-auto px-6 sm:px-12">
-
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg font-light text-white/70 text-center pt-24 tracking-wide"
-        >
-          {t('home.how_it_works')}
-        </motion.h2>
 
         <div className="flex">
 
