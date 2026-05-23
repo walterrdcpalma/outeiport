@@ -61,8 +61,8 @@ export default function HomePage() {
           <p className="text-[10px] tracking-[0.3em] text-white/25 uppercase">
             {t('home.hero_kicker')}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug">
-            Comece a sua<br />jornada connosco.
+          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug whitespace-pre-line">
+            {t('home.cta_title')}
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-2">
             <Link to="/simulador" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">

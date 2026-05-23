@@ -30,6 +30,7 @@
     "feature_prop_title": "Presupuesto Completo",
     "feature_prop_desc": "Recibe un presupuesto personalizado con ISV, despacho de aduanas, transporte y registro incluidos.",
     "feature_prop_cta": "Solicitar presupuesto",
+    "cta_title": "Comienza tu viaje\ncon nosotros.",
     "disclaimer": "Los valores de ISV mostrados son estimaciones basadas en las tablas CISV 2025. El valor final lo determina la Autoridad Tributaria portuguesa (AT) tras la inspección oficial."
   },
   "simulate": {
