@@ -61,32 +61,22 @@ export default function HomePage() {
       <HowItWorksSection />
 
       {/* CTA final */}
-      <section className="bg-dark py-32 px-6 border-t border-dark-border text-center">
-        <div className="max-w-md mx-auto space-y-8">
-          <p className="text-[10px] tracking-[0.3em] text-white/25 uppercase">
-            {t('home.hero_kicker')}
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug whitespace-pre-line">
-            {t('home.cta_title')}
-          </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-2">
-            <Link to="/simulador" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
-              <span>{t('home.cta_simulate')}</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-            <Link to="/proposta" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
-              <span>{t('home.cta_proposal')}</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="bg-dark py-10 px-6 border-t border-dark-border">
-        <p className="text-center text-xs text-muted max-w-lg mx-auto font-light leading-relaxed">
-          {t('home.disclaimer')}
+      <section className="bg-dark pt-10 pb-20 px-6 text-center">
+        <div className="max-w-md mx-auto space-y-10">
+        <p className="text-2xl sm:text-3xl font-light text-white/70 tracking-tight leading-snug">
+          {t('home.cta_tagline')}
         </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+          <Link to="/simulador" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
+            <span>{t('home.cta_simulate')}</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+          <Link to="/proposta" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-300 group">
+            <span>{t('home.cta_proposal')}</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+        </div>
+        </div>
       </section>
     </div>
   )
