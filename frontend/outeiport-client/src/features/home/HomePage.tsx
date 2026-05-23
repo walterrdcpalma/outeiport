@@ -7,16 +7,21 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero — full viewport, header floats over it */}
-      <section className="relative min-h-screen flex items-start overflow-hidden">
-        <img
-          src="/hero.jpg"
-          alt=""
-          className="anim-hero-img absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 65%)' }} />
+      {/* Hero — mobile: text then image stacked; desktop: full-viewport with image as bg */}
+      <section className="bg-dark overflow-hidden flex flex-col sm:block sm:relative sm:min-h-screen">
+        {/* Image — mobile: stacked below text; desktop: full-screen background */}
+        <div className="relative order-last sm:order-none sm:absolute sm:inset-0">
+          <img
+            src="/hero.jpg"
+            alt=""
+            className="anim-hero-img w-full h-72 object-cover [object-position:50%_55%] sm:absolute sm:inset-0 sm:h-full sm:object-cover sm:object-center"
+          />
+          {/* Mobile: fade top of image into bg-dark so text section blends seamlessly */}
+          <div className="sm:hidden absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-dark to-transparent pointer-events-none" />
+        </div>
+        <div className="hidden sm:block absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 65%)' }} />
 
-        <div className="relative z-10 px-8 sm:px-50 w-full pt-20">
+        <div className="relative z-10 px-8 sm:px-50 w-full pt-24 pb-12 sm:pt-20 sm:pb-0">
           <p className="anim-hero-1 text-[10px] tracking-[0.3em] text-white/30 uppercase mb-8">
             {t('home.hero_kicker')}
           </p>
@@ -44,8 +49,8 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+        {/* Scroll indicator — desktop only */}
+        <div className="hidden sm:flex scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2">
           <span className="text-[9px] tracking-[0.25em] text-white/20 uppercase">scroll</span>
           <svg className="w-4 h-4 text-white/20 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

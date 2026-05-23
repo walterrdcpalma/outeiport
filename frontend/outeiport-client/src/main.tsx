@@ -4,6 +4,8 @@ import './index.css'
 import './shared/i18n/i18n'
 import App from './App.tsx'
 
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
