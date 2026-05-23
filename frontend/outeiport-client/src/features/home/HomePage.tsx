@@ -13,7 +13,7 @@ export default function HomePage() {
           alt=""
           className="anim-hero-img absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/85 via-dark/50 to-dark/5" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 65%)' }} />
 
         <div className="relative z-10 px-8 sm:px-50 w-full pt-20">
           <p className="anim-hero-1 text-[10px] tracking-[0.3em] text-white/30 uppercase mb-8">

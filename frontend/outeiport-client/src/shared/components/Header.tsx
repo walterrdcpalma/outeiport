@@ -35,7 +35,7 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
         ? 'bg-dark/95 backdrop-blur-sm border-b border-dark-border'
-        : 'bg-transparent border-b border-transparent'
+        : 'bg-transparent'
     }`}>
       <div className="w-full px-8 sm:px-12 py-5 flex items-center justify-between">
         <Link to="/" className="text-sm font-semibold tracking-widest text-white/90 hover:text-white transition-colors uppercase">

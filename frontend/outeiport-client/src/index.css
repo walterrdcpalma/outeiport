@@ -34,14 +34,9 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes heroReveal {
-  from { opacity: 0; transform: scale(1.04); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
 .anim-hero-img {
   opacity: 0;
-  animation: heroReveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+  animation: fadeUp 2s ease 0s forwards;
 }
 .anim-hero-1 {
   opacity: 0;
