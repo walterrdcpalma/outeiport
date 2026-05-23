@@ -4,10 +4,13 @@
     "proposal": "Solicitar Presupuesto"
   },
   "home": {
-    "hero_title": "Importa tu coche de Alemania sin sorpresas",
+    "hero_kicker": "Importación automóvil · Alemania → Portugal",
+    "hero_line1": "Tu próximo coche,",
+    "hero_line2": "sin sorpresas.",
     "hero_subtitle": "Pega el enlace de un anuncio de mobile.de y obtén una estimación del ISV al instante. Conoce el coste total antes de comprar.",
     "cta_simulate": "Calcular ISV ahora",
     "cta_proposal": "Solicitar presupuesto",
+    "hero_cta": "Comienza aquí tu viaje",
     "how_it_works": "Cómo funciona",
     "step1_title": "Encuentra el coche",
     "step1_desc": "Busca en mobile.de y copia el enlace del anuncio del coche que quieres importar.",

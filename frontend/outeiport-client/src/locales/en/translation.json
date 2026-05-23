@@ -4,10 +4,13 @@
     "proposal": "Request Quote"
   },
   "home": {
-    "hero_title": "Import your car from Germany without surprises",
+    "hero_kicker": "Car import · Germany → Portugal",
+    "hero_line1": "Your next car,",
+    "hero_line2": "no surprises.",
     "hero_subtitle": "Paste a mobile.de listing link and get an instant ISV estimate. Know the total cost before you buy.",
     "cta_simulate": "Calculate ISV now",
     "cta_proposal": "Request quote",
+    "hero_cta": "Begin your journey here",
     "how_it_works": "How it works",
     "step1_title": "Find the car",
     "step1_desc": "Search on mobile.de and copy the link of the car you want to import.",

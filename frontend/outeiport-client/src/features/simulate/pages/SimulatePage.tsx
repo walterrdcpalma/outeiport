@@ -19,11 +19,11 @@ export default function SimulatePage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-blue-900 mb-2">{t('simulate.title')}</h1>
-      <p className="text-slate-500 mb-8">{t('simulate.subtitle')}</p>
+    <div className="max-w-xl mx-auto px-6 py-16">
+      <h1 className="text-2xl font-light text-white mb-1">{t('simulate.title')}</h1>
+      <p className="text-xs text-muted mb-10 font-light leading-relaxed">{t('simulate.subtitle')}</p>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
+      <div className="bg-dark-surface border border-dark-border rounded-xl p-6 mb-8">
         <SimulateForm
           onSubmit={(d) => { reset(); mutate(d) }}
           isLoading={isPending}
@@ -31,8 +31,8 @@ export default function SimulatePage() {
       </div>
 
       {isError && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm mb-6">
-          <strong>{t('errors.label')}:</strong> {getErrorMessage()}
+        <div className="border border-red-900/50 bg-red-950/20 text-red-400 rounded-xl p-4 text-xs mb-6 font-light">
+          {getErrorMessage()}
         </div>
       )}
 

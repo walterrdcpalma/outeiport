@@ -11,32 +11,44 @@ const languages = [
 export default function Header() {
   const { t, i18n } = useTranslation()
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
     }
+    function handleScroll() {
+      setScrolled(window.scrollY > 40)
+    }
     document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      document.removeEventListener('mousedown', handleClick)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   const current = languages.find(l => l.code === i18n.language) ?? languages[0]
 
   return (
-    <header className="bg-blue-900 text-white shadow-md">
-      <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight hover:opacity-90">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled
+        ? 'bg-dark/95 backdrop-blur-sm border-b border-dark-border'
+        : 'bg-transparent border-b border-transparent'
+    }`}>
+      <div className="w-full px-8 sm:px-12 py-5 flex items-center justify-between">
+        <Link to="/" className="text-sm font-semibold tracking-widest text-white/90 hover:text-white transition-colors uppercase">
           Outeiport
         </Link>
 
-        <nav className="flex items-center gap-6 text-sm font-medium">
+        <nav className="flex items-center gap-8 text-xs font-medium tracking-wide uppercase">
           <NavLink
             to="/simulador"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-300 underline underline-offset-4'
-                : 'hover:text-blue-300 transition-colors'
+                ? 'text-white'
+                : 'text-white/50 hover:text-white transition-colors'
             }
           >
             {t('nav.simulator')}
@@ -45,37 +57,37 @@ export default function Header() {
             to="/proposta"
             className={({ isActive }) =>
               isActive
-                ? 'bg-white text-blue-900 px-4 py-2 rounded-lg font-semibold'
-                : 'bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg transition-colors'
+                ? 'text-white'
+                : 'text-white/50 hover:text-white transition-colors'
             }
           >
             {t('nav.proposal')}
           </NavLink>
 
-          <div ref={ref} className="relative border-l border-blue-700 pl-4">
+          <div ref={ref} className="relative border-l border-white/10 pl-6">
             <button
               onClick={() => setOpen(o => !o)}
-              className="flex items-center gap-1 text-sm font-semibold hover:text-blue-200 transition-colors"
+              className="flex items-center gap-1 text-xs font-medium tracking-wide text-white/40 hover:text-white/70 transition-colors"
             >
               {current.label}
-              <svg className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className={`w-2.5 h-2.5 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
 
             {open && (
-              <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg overflow-hidden z-50 min-w-[120px]">
+              <div className="absolute right-0 top-full mt-3 bg-dark-surface/95 backdrop-blur-sm rounded-lg border border-dark-border overflow-hidden z-50 min-w-[130px]">
                 {languages.map(({ code, label, name }) => (
                   <button
                     key={code}
                     onClick={() => { i18n.changeLanguage(code); setOpen(false) }}
-                    className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left transition-colors
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-xs text-left transition-colors
                       ${i18n.language === code
-                        ? 'bg-blue-50 text-blue-900 font-semibold'
-                        : 'text-slate-700 hover:bg-slate-50'
+                        ? 'text-white font-semibold'
+                        : 'text-white/40 hover:text-white hover:bg-dark-border'
                       }`}
                   >
-                    <span className="w-6 text-xs font-bold text-slate-400">{label}</span>
+                    <span className="w-5 opacity-50 font-bold">{label}</span>
                     <span>{name}</span>
                   </button>
                 ))}

@@ -6,55 +6,66 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-            {t('home.hero_title')}
+      {/* Hero — full viewport, header floats over it */}
+      <section className="relative min-h-screen flex items-start overflow-hidden">
+        <img
+          src="/hero.jpg"
+          alt=""
+          className="anim-hero-img absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark/85 via-dark/50 to-dark/5" />
+
+        <div className="relative z-10 px-8 sm:px-50 w-full pt-20">
+          <p className="anim-hero-1 text-[10px] tracking-[0.3em] text-white/30 uppercase mb-8">
+            {t('home.hero_kicker')}
+          </p>
+          <h1 className="mb-8">
+            <span className="anim-hero-2 block text-4xl sm:text-5xl font-light text-white leading-[1.15] tracking-tight">
+              {t('home.hero_line1')}
+            </span>
+            <span className="anim-hero-3 block text-4xl sm:text-5xl font-light text-white/40 leading-[1.15] tracking-tight">
+              {t('home.hero_line2')}
+            </span>
           </h1>
-          <p className="text-blue-200 text-lg max-w-xl mx-auto">
+          <p className="anim-hero-4 text-sm text-white/35 max-w-sm leading-relaxed mb-12 font-light">
             {t('home.hero_subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-            <Link
-              to="/simulador"
-              className="bg-white text-blue-900 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors text-base"
-            >
-              {t('home.cta_simulate')}
-            </Link>
-            <Link
-              to="/proposta"
-              className="border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-white/10 transition-colors text-base"
-            >
-              {t('home.cta_proposal')}
-            </Link>
-          </div>
+          <Link
+            to="/simulador"
+            className="anim-hero-5 inline-flex items-center gap-3 group"
+          >
+            <span className="text-sm font-light text-white/40 group-hover:text-white/70 transition-colors duration-300 tracking-wide">
+              {t('home.hero_cta')}
+            </span>
+            <span className="text-white/25 group-hover:text-white/50 group-hover:translate-x-1.5 transition-all duration-300 text-sm">
+              →
+            </span>
+          </Link>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="py-16 px-4">
+      <section className="bg-dark-surface py-20 px-6 border-t border-dark-border">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-slate-800 mb-12">
+          <h2 className="text-lg font-light text-white/70 text-center mb-14 tracking-wide">
             {t('home.how_it_works')}
           </h2>
-          <div className="grid sm:grid-cols-3 gap-8">
-            <Step number="1" title={t('home.step1_title')} description={t('home.step1_desc')} />
-            <Step number="2" title={t('home.step2_title')} description={t('home.step2_desc')} />
-            <Step number="3" title={t('home.step3_title')} description={t('home.step3_desc')} />
+          <div className="grid sm:grid-cols-3 gap-12">
+            <Step number="01" title={t('home.step1_title')} description={t('home.step1_desc')} />
+            <Step number="02" title={t('home.step2_title')} description={t('home.step2_desc')} />
+            <Step number="03" title={t('home.step3_title')} description={t('home.step3_desc')} />
           </div>
         </div>
       </section>
 
       {/* Feature cards */}
-      <section className="bg-slate-50 py-16 px-4 border-t border-slate-100">
-        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
+      <section className="bg-dark py-20 px-6 border-t border-dark-border">
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-4">
           <FeatureCard
             title={t('home.feature_sim_title')}
             description={t('home.feature_sim_desc')}
             cta={t('home.feature_sim_cta')}
             to="/simulador"
-            accent
           />
           <FeatureCard
             title={t('home.feature_prop_title')}
@@ -66,8 +77,8 @@ export default function HomePage() {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-8 px-4">
-        <p className="text-center text-xs text-slate-400 max-w-xl mx-auto">
+      <section className="bg-dark py-10 px-6 border-t border-dark-border">
+        <p className="text-center text-xs text-muted max-w-lg mx-auto font-light leading-relaxed">
           {t('home.disclaimer')}
         </p>
       </section>
@@ -77,34 +88,29 @@ export default function HomePage() {
 
 function Step({ number, title, description }: { number: string; title: string; description: string }) {
   return (
-    <div className="flex flex-col items-center text-center gap-3">
-      <div className="w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-lg flex items-center justify-center">
-        {number}
-      </div>
-      <h3 className="font-semibold text-slate-800">{title}</h3>
-      <p className="text-slate-500 text-sm">{description}</p>
+    <div className="flex flex-col gap-4">
+      <span className="text-xs font-medium text-white/20 tracking-widest">{number}</span>
+      <h3 className="text-sm font-medium text-white/80">{title}</h3>
+      <p className="text-xs text-muted leading-relaxed font-light">{description}</p>
     </div>
   )
 }
 
 function FeatureCard({
-  title, description, cta, to, accent,
+  title, description, cta, to,
 }: {
-  title: string; description: string; cta: string; to: string; accent?: boolean
+  title: string; description: string; cta: string; to: string;
 }) {
   return (
-    <div className={`rounded-2xl p-6 space-y-3 border ${accent ? 'bg-blue-900 text-white border-blue-800' : 'bg-white text-slate-800 border-slate-200'}`}>
-      <h3 className="text-lg font-bold">{title}</h3>
-      <p className={`text-sm ${accent ? 'text-blue-200' : 'text-slate-500'}`}>{description}</p>
+    <div className="rounded-xl p-7 border border-dark-border bg-dark-surface space-y-4">
+      <h3 className="text-sm font-medium text-white/80">{title}</h3>
+      <p className="text-xs text-muted leading-relaxed font-light">{description}</p>
       <Link
         to={to}
-        className={`inline-block mt-2 font-semibold text-sm px-5 py-2 rounded-lg transition-colors ${
-          accent
-            ? 'bg-white text-blue-900 hover:bg-blue-50'
-            : 'bg-blue-600 text-white hover:bg-blue-700'
-        }`}
+        className="inline-flex items-center gap-2 text-xs text-white/30 hover:text-white/60 transition-colors group"
       >
-        {cta} →
+        <span>{cta}</span>
+        <span className="group-hover:translate-x-1 transition-transform">→</span>
       </Link>
     </div>
   )

@@ -5,10 +5,10 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-blue-950 text-slate-400 text-sm mt-auto">
+    <footer className="bg-dark border-t border-dark-border text-muted text-sm mt-auto">
       <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
         <p>{t('footer.rights', { year })}</p>
-        <p className="text-xs text-slate-500">{t('footer.disclaimer')}</p>
+        <p className="text-xs opacity-60">{t('footer.disclaimer')}</p>
       </div>
     </footer>
   )

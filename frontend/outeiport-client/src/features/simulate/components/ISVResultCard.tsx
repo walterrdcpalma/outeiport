@@ -26,16 +26,15 @@ export default function ISVResultCard({ result }: Props) {
   const isElectric = result.fuelType === 'Electric'
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Car summary */}
-      <div className="bg-blue-50 border border-blue-100 rounded-xl p-5">
-        <h2 className="text-xl font-bold text-blue-900">
+      <div className="bg-dark-surface border border-dark-border rounded-xl p-5">
+        <h2 className="text-base font-light text-white mb-4">
           {result.make} {result.model}{' '}
-          <span className="font-normal text-base text-slate-500">({result.year})</span>
+          <span className="text-muted">({result.year})</span>
         </h2>
-
-        <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 text-sm text-slate-700">
-          <Spec label={t('result.mileage')}     value={`${fmtInt(result.mileage)} km`} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+          <Spec label={t('result.mileage')}      value={`${fmtInt(result.mileage)} km`} />
           <Spec label={t('result.displacement')} value={result.displacement ? `${fmtInt(result.displacement)} cc` : '—'} />
           <Spec label={t('result.fuel')}         value={t(fuelKeys[result.fuelType] ?? 'result.fuel_other')} />
           <Spec label={t('result.co2')}          value={result.co2 ? `${result.co2} g/km` : '—'} />
@@ -46,28 +45,28 @@ export default function ISVResultCard({ result }: Props) {
       </div>
 
       {/* ISV breakdown */}
-      <div className="border border-slate-200 rounded-xl overflow-hidden">
-        <div className="bg-slate-50 px-5 py-3 border-b border-slate-200">
-          <h3 className="font-semibold text-slate-800">{t('result.isv_breakdown')}</h3>
+      <div className="border border-dark-border rounded-xl overflow-hidden">
+        <div className="px-5 py-3 border-b border-dark-border">
+          <h3 className="text-[10px] font-medium text-white/30 tracking-widest uppercase">{t('result.isv_breakdown')}</h3>
         </div>
 
         {isElectric ? (
-          <div className="px-5 py-6 text-center text-green-700 font-medium">
+          <div className="px-5 py-6 text-center text-white/40 text-sm font-light">
             {t('result.electric_exempt')}
           </div>
         ) : (
           <table className="w-full text-sm">
             <tbody>
-              <Row label={t('result.displacement_component')} value={`€ ${fmt(result.isv.displacementComponent)}`} />
+              <Row label={t('result.displacement_component')}  value={`€ ${fmt(result.isv.displacementComponent)}`} />
               <Row label={t('result.environmental_component')} value={`€ ${fmt(result.isv.environmentalComponent)}`} />
               <Row
                 label={t('result.depreciation', { year: result.year })}
                 value={`× ${result.isv.depreciationCoefficient.toFixed(2)}`}
                 muted
               />
-              <tr className="bg-blue-600 text-white">
-                <td className="px-5 py-4 font-bold text-base">{t('result.isv_total')}</td>
-                <td className="px-5 py-4 font-bold text-base text-right">
+              <tr className="border-t border-dark-border">
+                <td className="px-5 py-4 text-sm font-medium text-white">{t('result.isv_total')}</td>
+                <td className="px-5 py-4 text-sm font-semibold text-white text-right font-mono">
                   € {fmt(result.isv.total)}
                 </td>
               </tr>
@@ -76,7 +75,7 @@ export default function ISVResultCard({ result }: Props) {
         )}
       </div>
 
-      <p className="text-xs text-slate-400 text-center">{t('result.disclaimer')}</p>
+      <p className="text-xs text-muted text-center font-light">{t('result.disclaimer')}</p>
     </div>
   )
 }
@@ -84,17 +83,17 @@ export default function ISVResultCard({ result }: Props) {
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <span className="text-slate-400 text-xs block">{label}</span>
-      <span className="font-medium">{value}</span>
+      <span className="text-[10px] text-muted uppercase tracking-widest block mb-0.5">{label}</span>
+      <span className="text-sm font-light text-white/80">{value}</span>
     </div>
   )
 }
 
 function Row({ label, value, muted }: { label: string; value: string; muted?: boolean }) {
   return (
-    <tr className="border-b border-slate-100 last:border-0">
-      <td className={`px-5 py-3 ${muted ? 'text-slate-400' : 'text-slate-700'}`}>{label}</td>
-      <td className={`px-5 py-3 text-right font-mono ${muted ? 'text-slate-400' : 'text-slate-800 font-semibold'}`}>
+    <tr className="border-b border-dark-border last:border-0">
+      <td className={`px-5 py-3 font-light ${muted ? 'text-muted' : 'text-white/60'}`}>{label}</td>
+      <td className={`px-5 py-3 text-right font-mono text-xs ${muted ? 'text-muted' : 'text-white/80'}`}>
         {value}
       </td>
     </tr>

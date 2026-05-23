@@ -18,23 +18,23 @@ export default function ProposalPage() {
   }
 
   if (isSuccess) return (
-    <div className="max-w-lg mx-auto px-4 py-12">
+    <div className="max-w-lg mx-auto px-6 py-16">
       <SuccessMessage onReset={reset} />
     </div>
   )
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-blue-900 mb-2">{t('proposal.title')}</h1>
-      <p className="text-slate-500 mb-8">{t('proposal.subtitle')}</p>
+    <div className="max-w-lg mx-auto px-6 py-16">
+      <h1 className="text-2xl font-light text-white mb-1">{t('proposal.title')}</h1>
+      <p className="text-xs text-muted mb-10 font-light leading-relaxed">{t('proposal.subtitle')}</p>
 
       {isError && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm mb-6">
-          <strong>{t('errors.label')}:</strong> {getErrorMessage()}
+        <div className="border border-red-900/50 bg-red-950/20 text-red-400 rounded-xl p-4 text-xs mb-6 font-light">
+          {getErrorMessage()}
         </div>
       )}
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-dark-surface border border-dark-border rounded-xl p-6">
         <ProposalForm onSubmit={mutate} isLoading={isPending} />
       </div>
     </div>

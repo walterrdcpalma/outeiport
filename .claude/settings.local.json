@@ -27,11 +27,13 @@
       "Bash(curl -s \"https://queue.importrust.com/api/propostas/get?request=https%3A%2F%2Fsuchen.mobile.de%2Fauto-inserat%2Fland-rover-range-rover-evoque-d200-s-awd-automatik-tempom-a-freiburg%2F454166360.html%3Flst%3Dp\")",
       "Bash(curl -s -X POST http://localhost:5076/api/simulate -H 'Content-Type: application/json' -d '{\"url\":\"https://suchen.mobile.de/auto-inserat/land-rover-range-rover-evoque-d200-s-awd-automatik-tempom-a-freiburg/454166360.html?lst=p\"}')",
       "Bash(mkdir -p /c/Users/walte/Documents/outeiport/backend/Outeiport.Api/Resources)",
-      "Bash(cp /c/Users/walte/Documents/outeiport/frontend/outeiport-client/public/locales/en/translation.json /tmp/en_translation.json && echo \"copied\")"
+      "Bash(cp /c/Users/walte/Documents/outeiport/frontend/outeiport-client/public/locales/en/translation.json /tmp/en_translation.json && echo \"copied\")",
+      "Read(//c/Users/walte/.claude/plans/**)"
     ],
     "additionalDirectories": [
       "C:\\Users\\walte\\Documents\\outeiport\\backend\\Outeiport.Api",
-      "\\tmp"
+      "\\tmp",
+      "c:\\Users\\walte\\.claude\\plans"
     ]
   }
 }

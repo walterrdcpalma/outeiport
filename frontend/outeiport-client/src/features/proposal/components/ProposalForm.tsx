@@ -13,7 +13,7 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <Field label={t('proposal.label_name')} error={errors.name?.message} required>
+      <Field label={t('proposal.label_name')} error={errors.name?.message}>
         <input
           type="text"
           placeholder={t('proposal.placeholder_name')}
@@ -22,7 +22,7 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         />
       </Field>
 
-      <Field label={t('proposal.label_email')} error={errors.email?.message} required>
+      <Field label={t('proposal.label_email')} error={errors.email?.message}>
         <input
           type="email"
           placeholder={t('proposal.placeholder_email')}
@@ -34,7 +34,7 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         />
       </Field>
 
-      <Field label={t('proposal.label_phone')} error={errors.phone?.message} required>
+      <Field label={t('proposal.label_phone')} error={errors.phone?.message}>
         <input
           type="tel"
           placeholder={t('proposal.placeholder_phone')}
@@ -43,7 +43,7 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         />
       </Field>
 
-      <Field label={t('proposal.label_car_link')} error={errors.carLink?.message} required>
+      <Field label={t('proposal.label_car_link')} error={errors.carLink?.message}>
         <input
           type="url"
           placeholder={t('proposal.placeholder_car_link')}
@@ -55,7 +55,7 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         />
       </Field>
 
-      <Field label={t('proposal.label_message')} error={errors.message?.message} required>
+      <Field label={t('proposal.label_message')} error={errors.message?.message}>
         <textarea
           rows={4}
           placeholder={t('proposal.placeholder_message')}
@@ -67,11 +67,11 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+        className="w-full bg-white text-dark font-semibold py-3 px-6 rounded-lg hover:bg-white/90 disabled:opacity-40 transition-colors flex items-center justify-center gap-2 text-sm"
       >
         {isLoading ? (
           <>
-            <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            <span className="inline-block w-4 h-4 border-2 border-dark border-t-transparent rounded-full animate-spin" />
             {t('proposal.btn_loading')}
           </>
         ) : (
@@ -83,17 +83,17 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
 }
 
 function Field({
-  label, error, required, children,
+  label, error, children,
 }: {
-  label: string; error?: string; required?: boolean; children: React.ReactNode
+  label: string; error?: string; children: React.ReactNode
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1">
-        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+      <label className="block text-[10px] font-medium text-white/30 mb-2 tracking-widest uppercase">
+        {label}
       </label>
       {children}
-      {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1.5 text-xs text-red-400 font-light">{error}</p>}
     </div>
   )
 }
