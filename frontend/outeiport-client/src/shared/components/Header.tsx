@@ -11,32 +11,22 @@ const languages = [
 export default function Header() {
   const { t, i18n } = useTranslation()
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
     }
-    function handleScroll() {
-      setScrolled(window.scrollY > 40)
-    }
     document.addEventListener('mousedown', handleClick)
-    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       document.removeEventListener('mousedown', handleClick)
-      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   const current = languages.find(l => l.code === i18n.language) ?? languages[0]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled
-        ? 'bg-dark/95 backdrop-blur-sm border-b border-dark-border'
-        : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ background: 'linear-gradient(to bottom, rgba(1,1,1,0.85) 0%, rgba(1,1,1,0) 100%)' }}>
       <div className="w-full px-8 sm:px-12 py-5 flex items-center justify-between">
         <Link to="/" className="text-sm font-semibold tracking-widest text-white/90 hover:text-white transition-colors uppercase">
           Outeiport

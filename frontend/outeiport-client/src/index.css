@@ -36,7 +36,11 @@ body {
 
 .anim-hero-img {
   opacity: 0;
-  animation: fadeUp 2s ease 0s forwards;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 .anim-hero-1 {
   opacity: 0;
