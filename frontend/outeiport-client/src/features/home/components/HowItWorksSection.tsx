@@ -1,14 +1,6 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-}
 
 function ChatIcon() {
   return (
@@ -38,7 +30,7 @@ function TruckIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-      <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+      <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1" />
     </svg>
   )
 }
@@ -60,53 +52,148 @@ function KeyIcon() {
 }
 
 const steps = [
-  { num: '01', icon: <ChatIcon />,       titleKey: 'home.step1_title', descKey: 'home.step1_desc' },
-  { num: '02', icon: <DocumentIcon />,   titleKey: 'home.step2_title', descKey: 'home.step2_desc' },
+  { num: '01', icon: <ChatIcon />,        titleKey: 'home.step1_title', descKey: 'home.step1_desc' },
+  { num: '02', icon: <DocumentIcon />,    titleKey: 'home.step2_title', descKey: 'home.step2_desc' },
   { num: '03', icon: <CheckCircleIcon />, titleKey: 'home.step3_title', descKey: 'home.step3_desc' },
-  { num: '04', icon: <TruckIcon />,      titleKey: 'home.step4_title', descKey: 'home.step4_desc' },
-  { num: '05', icon: <ShieldIcon />,     titleKey: 'home.step5_title', descKey: 'home.step5_desc' },
-  { num: '06', icon: <KeyIcon />,        titleKey: 'home.step6_title', descKey: 'home.step6_desc' },
+  { num: '04', icon: <TruckIcon />,       titleKey: 'home.step4_title', descKey: 'home.step4_desc' },
+  { num: '05', icon: <ShieldIcon />,      titleKey: 'home.step5_title', descKey: 'home.step5_desc' },
+  { num: '06', icon: <KeyIcon />,         titleKey: 'home.step6_title', descKey: 'home.step6_desc' },
 ]
 
 export default function HowItWorksSection() {
   const { t } = useTranslation()
+  const [activeStep, setActiveStep] = useState(0)
+
+  const handleInView = useCallback((index: number) => {
+    setActiveStep(index)
+  }, [])
 
   return (
-    <section className="bg-dark py-24 px-6 border-t border-dark-border">
-      <div className="max-w-5xl mx-auto">
+    <section className="bg-dark border-t border-dark-border">
+      <div className="max-w-6xl mx-auto px-6 sm:px-12">
+
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg font-light text-white/70 text-center mb-16 tracking-wide"
+          className="text-lg font-light text-white/70 text-center pt-24 tracking-wide"
         >
           {t('home.how_it_works')}
         </motion.h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-dark-border">
-          {steps.map(({ num, icon, titleKey, descKey }, i) => (
-            <motion.div
-              key={num}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              variants={cardVariants}
-              className="bg-dark p-8 flex flex-col gap-5"
-            >
-              <div className="flex items-start justify-between">
-                <span className="text-xs font-medium text-white/20 tracking-widest">{num}</span>
-                <div className="w-5 h-5 text-white/25">{icon}</div>
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-white/80 mb-2">{t(titleKey)}</h3>
-                <p className="text-xs text-muted leading-relaxed font-light">{t(descKey)}</p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="flex">
+
+          {/* ── Left: sticky panel (desktop only) ── */}
+          <div className="hidden md:flex w-5/12 sticky top-0 h-screen items-center justify-center shrink-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStep}
+                initial={{ opacity: 0, y: 14, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0,  scale: 1   }}
+                exit={{ opacity: 0,    y: -14, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col items-center gap-5 select-none"
+              >
+                {/* Giant faded number */}
+                <span className="text-[108px] font-extralight leading-none text-white/[0.04] tabular-nums">
+                  {steps[activeStep].num}
+                </span>
+
+                {/* Icon */}
+                <div className="w-14 h-14 text-white/40">
+                  {steps[activeStep].icon}
+                </div>
+
+                {/* Progress dots */}
+                <div className="flex items-center gap-2 mt-1">
+                  {steps.map((_, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ width: i === activeStep ? 28 : 10, opacity: i === activeStep ? 0.5 : 0.15 }}
+                      transition={{ duration: 0.4 }}
+                      className="h-px bg-white rounded-full"
+                    />
+                  ))}
+                </div>
+
+                {/* Counter */}
+                <p className="text-[10px] text-white/20 tracking-[0.25em] font-light">
+                  {String(activeStep + 1).padStart(2, '0')} / 06
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* ── Right: scrolling steps ── */}
+          <div className="w-full md:w-7/12 pt-16 pb-24">
+            {steps.map((step, i) => (
+              <StepRow
+                key={step.num}
+                step={step}
+                index={i}
+                isActive={i === activeStep}
+                onInView={handleInView}
+              />
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
+  )
+}
+
+interface StepRowProps {
+  step: typeof steps[number]
+  index: number
+  isActive: boolean
+  onInView: (index: number) => void
+}
+
+function StepRow({ step, index, isActive, onInView }: StepRowProps) {
+  const { t } = useTranslation()
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) onInView(index) },
+      { rootMargin: '-35% 0px -35% 0px', threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [index, onInView])
+
+  return (
+    <div
+      ref={ref}
+      className="min-h-[65vh] flex items-center border-b border-dark-border last:border-0 py-14"
+    >
+      <motion.div
+        animate={{ opacity: isActive ? 1 : 0.2 }}
+        transition={{ duration: 0.4 }}
+        className="space-y-4 w-full"
+      >
+        {/* Mobile: num + icon inline */}
+        <div className="flex items-center gap-3 md:hidden">
+          <span className="text-xs font-medium text-white/25 tracking-widest">{step.num}</span>
+          <div className="w-4 h-4 text-white/30">{step.icon}</div>
+        </div>
+
+        {/* Desktop: num only */}
+        <span className="hidden md:block text-xs font-medium text-white/25 tracking-widest">
+          {step.num}
+        </span>
+
+        <h3 className="text-2xl sm:text-3xl font-light text-white leading-snug tracking-tight">
+          {t(step.titleKey)}
+        </h3>
+        <p className="text-sm text-muted leading-relaxed max-w-xs font-light">
+          {t(step.descKey)}
+        </p>
+      </motion.div>
+    </div>
   )
 }
