@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import type { SimulateRequest } from '../../../types/api'
 
 interface Props {
@@ -8,22 +9,22 @@ interface Props {
 
 export default function SimulateForm({ onSubmit, isLoading }: Props) {
   const { register, handleSubmit, formState: { errors } } = useForm<SimulateRequest>()
+  const { t } = useTranslation()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="url" className="block text-sm font-medium text-slate-700 mb-1">
-          Link do anúncio mobile.de
+          {t('simulate.label_url')}
         </label>
         <input
           id="url"
           type="url"
-          placeholder="https://suchen.mobile.de/auto-inserat/..."
+          placeholder={t('simulate.placeholder_url')}
           className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           {...register('url', {
-            required: 'O link é obrigatório',
-            validate: (v) =>
-              v.includes('mobile.de') || 'Deve ser um link válido do mobile.de',
+            required: t('simulate.error_required'),
+            validate: (v) => v.includes('mobile.de') || t('simulate.error_invalid'),
           })}
         />
         {errors.url && (
@@ -39,10 +40,10 @@ export default function SimulateForm({ onSubmit, isLoading }: Props) {
         {isLoading ? (
           <>
             <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            A calcular…
+            {t('simulate.btn_loading')}
           </>
         ) : (
-          'Calcular ISV'
+          t('simulate.btn_submit')
         )}
       </button>
     </form>

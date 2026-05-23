@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "simulator": "Simulador ISV",
+    "proposal": "Pedir Proposta"
+  },
+  "home": {
+    "hero_title": "Importa o teu carro da Alemanha sem surpresas",
+    "hero_subtitle": "Cola o link de um anúncio do mobile.de e obtém uma estimativa do ISV de imediato. Sabe o custo total antes de comprar.",
+    "cta_simulate": "Calcular ISV agora",
+    "cta_proposal": "Pedir proposta",
+    "how_it_works": "Como funciona",
+    "step1_title": "Encontra o carro",
+    "step1_desc": "Pesquisa no mobile.de e copia o link do anúncio do carro que queres importar.",
+    "step2_title": "Simula o ISV",
+    "step2_desc": "Cola o link no simulador. Extraímos as características e calculamos o ISV estimado automaticamente.",
+    "step3_title": "Pede uma proposta",
+    "step3_desc": "Queres avançar? Envia-nos os detalhes e preparamos uma proposta completa de importação.",
+    "feature_sim_title": "Simulador ISV",
+    "feature_sim_desc": "Estima o Imposto Sobre Veículos para qualquer carro no mobile.de — gasolina, diesel, híbrido ou elétrico.",
+    "feature_sim_cta": "Abrir simulador",
+    "feature_prop_title": "Proposta Completa",
+    "feature_prop_desc": "Recebe uma proposta personalizada com ISV, desalfandegamento, transporte e registo incluídos.",
+    "feature_prop_cta": "Pedir proposta",
+    "disclaimer": "Os valores de ISV apresentados são estimativas baseadas nas tabelas CISV 2025. O valor final é determinado pela Autoridade Tributária (AT) após inspeção oficial."
+  },
+  "simulate": {
+    "title": "Simulador ISV",
+    "subtitle": "Cola o link de um anúncio do mobile.de e obtém uma estimativa do ISV para importar o veículo para Portugal.",
+    "label_url": "Link do anúncio mobile.de",
+    "placeholder_url": "https://suchen.mobile.de/auto-inserat/...",
+    "btn_submit": "Calcular ISV",
+    "btn_loading": "A calcular…",
+    "error_required": "O link é obrigatório",
+    "error_invalid": "Deve ser um link válido do mobile.de"
+  },
+  "result": {
+    "fuel_gasoline": "Gasolina / GPL",
+    "fuel_diesel": "Diesel",
+    "fuel_electric": "Elétrico",
+    "fuel_plugin_hybrid": "Híbrido Plug-in",
+    "fuel_hybrid": "Híbrido",
+    "fuel_other": "Outro",
+    "mileage": "Quilometragem",
+    "displacement": "Cilindrada",
+    "fuel": "Combustível",
+    "co2": "Emissões CO₂",
+    "power": "Potência",
+    "transmission": "Transmissão",
+    "price": "Preço (origem)",
+    "isv_breakdown": "Desagregação do ISV (estimativa)",
+    "electric_exempt": "Veículos elétricos estão isentos de ISV (€ 0,00)",
+    "displacement_component": "Componente de cilindrada",
+    "environmental_component": "Componente ambiental (CO₂)",
+    "depreciation": "Coeficiente de desvalorização ({{year}})",
+    "isv_total": "ISV Estimado",
+    "disclaimer": "Estimativa baseada nas tabelas CISV 2025. O valor final do ISV é determinado pela Autoridade Tributária (AT) após inspeção oficial do veículo."
+  },
+  "proposal": {
+    "title": "Pedir Proposta",
+    "subtitle": "Preenche o formulário e preparamos uma proposta personalizada para a tua importação.",
+    "label_name": "Nome completo",
+    "placeholder_name": "João Silva",
+    "label_email": "Email",
+    "placeholder_email": "joao@email.com",
+    "label_phone": "Telefone",
+    "placeholder_phone": "+351 9XX XXX XXX",
+    "label_car_link": "Link do carro",
+    "placeholder_car_link": "https://suchen.mobile.de/...",
+    "label_message": "Mensagem",
+    "placeholder_message": "Descreve o carro que pretendes importar...",
+    "btn_submit": "Enviar Pedido",
+    "btn_loading": "A enviar…",
+    "error_name": "O nome é obrigatório",
+    "error_email_required": "O email é obrigatório",
+    "error_email_invalid": "Email inválido",
+    "error_phone": "O telefone é obrigatório",
+    "error_car_link_required": "O link do carro é obrigatório",
+    "error_car_link_invalid": "O link deve ser um URL válido",
+    "error_message": "A mensagem é obrigatória"
+  },
+  "success": {
+    "title": "Pedido enviado!",
+    "message": "Recebemos o teu pedido de proposta e entraremos em contacto brevemente.",
+    "btn_again": "Enviar outro pedido"
+  },
+  "footer": {
+    "rights": "© {{year}} Outeiport. Todos os direitos reservados.",
+    "disclaimer": "Os valores de ISV apresentados são estimativas — o valor final depende de inspeção oficial."
+  },
+  "errors": {
+    "unexpected": "Ocorreu um erro inesperado.",
+    "generic": "Algo correu mal.",
+    "label": "Erro"
+  }
+}

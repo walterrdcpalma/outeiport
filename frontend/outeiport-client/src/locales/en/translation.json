@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "simulator": "ISV Simulator",
+    "proposal": "Request Quote"
+  },
+  "home": {
+    "hero_title": "Import your car from Germany without surprises",
+    "hero_subtitle": "Paste a mobile.de listing link and get an instant ISV estimate. Know the total cost before you buy.",
+    "cta_simulate": "Calculate ISV now",
+    "cta_proposal": "Request quote",
+    "how_it_works": "How it works",
+    "step1_title": "Find the car",
+    "step1_desc": "Search on mobile.de and copy the link of the car you want to import.",
+    "step2_title": "Simulate the ISV",
+    "step2_desc": "Paste the link into the simulator. We extract the specs and calculate the estimated ISV automatically.",
+    "step3_title": "Request a quote",
+    "step3_desc": "Ready to proceed? Send us the details and we'll prepare a full import quote.",
+    "feature_sim_title": "ISV Simulator",
+    "feature_sim_desc": "Estimate the Vehicle Tax for any car on mobile.de — petrol, diesel, hybrid or electric.",
+    "feature_sim_cta": "Open simulator",
+    "feature_prop_title": "Full Quote",
+    "feature_prop_desc": "Receive a personalised quote including ISV, customs clearance, transport and registration.",
+    "feature_prop_cta": "Request quote",
+    "disclaimer": "ISV values shown are estimates based on CISV 2025 tables. The final value is determined by the Portuguese Tax Authority (AT) after official inspection."
+  },
+  "simulate": {
+    "title": "ISV Simulator",
+    "subtitle": "Paste a mobile.de listing link and get an ISV estimate to import the vehicle to Portugal.",
+    "label_url": "mobile.de listing link",
+    "placeholder_url": "https://suchen.mobile.de/auto-inserat/...",
+    "btn_submit": "Calculate ISV",
+    "btn_loading": "Calculating…",
+    "error_required": "Link is required",
+    "error_invalid": "Must be a valid mobile.de link"
+  },
+  "result": {
+    "fuel_gasoline": "Petrol / LPG",
+    "fuel_diesel": "Diesel",
+    "fuel_electric": "Electric",
+    "fuel_plugin_hybrid": "Plug-in Hybrid",
+    "fuel_hybrid": "Hybrid",
+    "fuel_other": "Other",
+    "mileage": "Mileage",
+    "displacement": "Displacement",
+    "fuel": "Fuel",
+    "co2": "CO₂ Emissions",
+    "power": "Power",
+    "transmission": "Transmission",
+    "price": "Price (origin)",
+    "isv_breakdown": "ISV Breakdown (estimate)",
+    "electric_exempt": "Electric vehicles are exempt from ISV (€ 0.00)",
+    "displacement_component": "Displacement component",
+    "environmental_component": "Environmental component (CO₂)",
+    "depreciation": "Depreciation coefficient ({{year}})",
+    "isv_total": "Estimated ISV",
+    "disclaimer": "Estimate based on CISV 2025 tables. The final ISV value is determined by the Portuguese Tax Authority (AT) after official vehicle inspection."
+  },
+  "proposal": {
+    "title": "Request Quote",
+    "subtitle": "Fill in the form and we'll prepare a personalised import quote for you.",
+    "label_name": "Full name",
+    "placeholder_name": "John Smith",
+    "label_email": "Email",
+    "placeholder_email": "john@email.com",
+    "label_phone": "Phone",
+    "placeholder_phone": "+351 9XX XXX XXX",
+    "label_car_link": "Car link",
+    "placeholder_car_link": "https://suchen.mobile.de/...",
+    "label_message": "Message",
+    "placeholder_message": "Describe the car you want to import...",
+    "btn_submit": "Send Request",
+    "btn_loading": "Sending…",
+    "error_name": "Name is required",
+    "error_email_required": "Email is required",
+    "error_email_invalid": "Invalid email",
+    "error_phone": "Phone number is required",
+    "error_car_link_required": "Car link is required",
+    "error_car_link_invalid": "Link must be a valid URL",
+    "error_message": "Message is required"
+  },
+  "success": {
+    "title": "Request sent!",
+    "message": "We've received your quote request and will be in touch shortly.",
+    "btn_again": "Send another request"
+  },
+  "footer": {
+    "rights": "© {{year}} Outeiport. All rights reserved.",
+    "disclaimer": "ISV values shown are estimates — the final value depends on official inspection."
+  },
+  "errors": {
+    "unexpected": "An unexpected error occurred.",
+    "generic": "Something went wrong.",
+    "label": "Error"
+  }
+}

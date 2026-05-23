@@ -1,16 +1,17 @@
+import { useTranslation } from 'react-i18next'
 import type { SimulateResponse } from '../../../types/api'
 
 interface Props {
   result: SimulateResponse
 }
 
-const fuelLabels: Record<string, string> = {
-  Gasoline:    'Gasolina / GPL',
-  Diesel:      'Diesel',
-  Electric:    'Elétrico',
-  PlugInHybrid:'Híbrido Plug-in',
-  Hybrid:      'Híbrido',
-  Other:       'Outro',
+const fuelKeys: Record<string, string> = {
+  Gasoline:     'result.fuel_gasoline',
+  Diesel:       'result.fuel_diesel',
+  Electric:     'result.fuel_electric',
+  PlugInHybrid: 'result.fuel_plugin_hybrid',
+  Hybrid:       'result.fuel_hybrid',
+  Other:        'result.fuel_other',
 }
 
 function fmt(n: number) {
@@ -21,6 +22,7 @@ function fmtInt(n: number) {
 }
 
 export default function ISVResultCard({ result }: Props) {
+  const { t } = useTranslation()
   const isElectric = result.fuelType === 'Electric'
 
   return (
@@ -33,38 +35,38 @@ export default function ISVResultCard({ result }: Props) {
         </h2>
 
         <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 text-sm text-slate-700">
-          <Spec label="Quilometragem"    value={`${fmtInt(result.mileage)} km`} />
-          <Spec label="Cilindrada"       value={result.displacement ? `${fmtInt(result.displacement)} cc` : '—'} />
-          <Spec label="Combustível"      value={fuelLabels[result.fuelType] ?? result.fuelType} />
-          <Spec label="Emissões CO₂"    value={result.co2 ? `${result.co2} g/km` : '—'} />
-          <Spec label="Potência"         value={result.powerKw ? `${result.powerKw} kW` : '—'} />
-          <Spec label="Transmissão"      value={result.transmission ?? '—'} />
-          <Spec label="Preço (origem)"   value={result.priceEur ? `€ ${fmtInt(result.priceEur)}` : '—'} />
+          <Spec label={t('result.mileage')}     value={`${fmtInt(result.mileage)} km`} />
+          <Spec label={t('result.displacement')} value={result.displacement ? `${fmtInt(result.displacement)} cc` : '—'} />
+          <Spec label={t('result.fuel')}         value={t(fuelKeys[result.fuelType] ?? 'result.fuel_other')} />
+          <Spec label={t('result.co2')}          value={result.co2 ? `${result.co2} g/km` : '—'} />
+          <Spec label={t('result.power')}        value={result.powerKw ? `${result.powerKw} kW` : '—'} />
+          <Spec label={t('result.transmission')} value={result.transmission ?? '—'} />
+          <Spec label={t('result.price')}        value={result.priceEur ? `€ ${fmtInt(result.priceEur)}` : '—'} />
         </div>
       </div>
 
       {/* ISV breakdown */}
       <div className="border border-slate-200 rounded-xl overflow-hidden">
         <div className="bg-slate-50 px-5 py-3 border-b border-slate-200">
-          <h3 className="font-semibold text-slate-800">Desagregação do ISV (estimativa)</h3>
+          <h3 className="font-semibold text-slate-800">{t('result.isv_breakdown')}</h3>
         </div>
 
         {isElectric ? (
           <div className="px-5 py-6 text-center text-green-700 font-medium">
-            Veículos elétricos estão isentos de ISV (€ 0,00)
+            {t('result.electric_exempt')}
           </div>
         ) : (
           <table className="w-full text-sm">
             <tbody>
-              <Row label="Componente de cilindrada"     value={`€ ${fmt(result.isv.displacementComponent)}`} />
-              <Row label="Componente ambiental (CO₂)"  value={`€ ${fmt(result.isv.environmentalComponent)}`} />
+              <Row label={t('result.displacement_component')} value={`€ ${fmt(result.isv.displacementComponent)}`} />
+              <Row label={t('result.environmental_component')} value={`€ ${fmt(result.isv.environmentalComponent)}`} />
               <Row
-                label={`Coeficiente de desvalorização (${result.year})`}
+                label={t('result.depreciation', { year: result.year })}
                 value={`× ${result.isv.depreciationCoefficient.toFixed(2)}`}
                 muted
               />
               <tr className="bg-blue-600 text-white">
-                <td className="px-5 py-4 font-bold text-base">ISV Estimado</td>
+                <td className="px-5 py-4 font-bold text-base">{t('result.isv_total')}</td>
                 <td className="px-5 py-4 font-bold text-base text-right">
                   € {fmt(result.isv.total)}
                 </td>
@@ -74,10 +76,7 @@ export default function ISVResultCard({ result }: Props) {
         )}
       </div>
 
-      <p className="text-xs text-slate-400 text-center">
-        Estimativa baseada nas tabelas CISV 2025. O valor final do ISV é determinado pela Autoridade
-        Tributária (AT) após inspeção oficial do veículo.
-      </p>
+      <p className="text-xs text-slate-400 text-center">{t('result.disclaimer')}</p>
     </div>
   )
 }

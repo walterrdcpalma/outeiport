@@ -8,6 +8,8 @@ using Resend;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddLocalization(o => o.ResourcesPath = "Resources");
+
 builder.Services.AddCors(options =>
     options.AddPolicy("Frontend", policy =>
         policy
@@ -42,6 +44,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseExceptionHandler();
 app.UseCors("Frontend");
+app.UseRequestLocalization(options =>
+{
+    var supported = new[] { "pt", "en", "es" };
+    options.SetDefaultCulture("pt")
+           .AddSupportedCultures(supported)
+           .AddSupportedUICultures(supported);
+});
 
 app.MapSimulateEndpoints();
 app.MapProposalEndpoints();

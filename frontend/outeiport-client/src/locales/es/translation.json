@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "simulator": "Simulador ISV",
+    "proposal": "Solicitar Presupuesto"
+  },
+  "home": {
+    "hero_title": "Importa tu coche de Alemania sin sorpresas",
+    "hero_subtitle": "Pega el enlace de un anuncio de mobile.de y obtén una estimación del ISV al instante. Conoce el coste total antes de comprar.",
+    "cta_simulate": "Calcular ISV ahora",
+    "cta_proposal": "Solicitar presupuesto",
+    "how_it_works": "Cómo funciona",
+    "step1_title": "Encuentra el coche",
+    "step1_desc": "Busca en mobile.de y copia el enlace del anuncio del coche que quieres importar.",
+    "step2_title": "Simula el ISV",
+    "step2_desc": "Pega el enlace en el simulador. Extraemos las características y calculamos el ISV estimado automáticamente.",
+    "step3_title": "Solicita un presupuesto",
+    "step3_desc": "¿Listo para avanzar? Envíanos los detalles y prepararemos un presupuesto completo de importación.",
+    "feature_sim_title": "Simulador ISV",
+    "feature_sim_desc": "Estima el Impuesto sobre Vehículos para cualquier coche en mobile.de — gasolina, diésel, híbrido o eléctrico.",
+    "feature_sim_cta": "Abrir simulador",
+    "feature_prop_title": "Presupuesto Completo",
+    "feature_prop_desc": "Recibe un presupuesto personalizado con ISV, despacho de aduanas, transporte y registro incluidos.",
+    "feature_prop_cta": "Solicitar presupuesto",
+    "disclaimer": "Los valores de ISV mostrados son estimaciones basadas en las tablas CISV 2025. El valor final lo determina la Autoridad Tributaria portuguesa (AT) tras la inspección oficial."
+  },
+  "simulate": {
+    "title": "Simulador ISV",
+    "subtitle": "Pega el enlace de un anuncio de mobile.de y obtén una estimación del ISV para importar el vehículo a Portugal.",
+    "label_url": "Enlace del anuncio mobile.de",
+    "placeholder_url": "https://suchen.mobile.de/auto-inserat/...",
+    "btn_submit": "Calcular ISV",
+    "btn_loading": "Calculando…",
+    "error_required": "El enlace es obligatorio",
+    "error_invalid": "Debe ser un enlace válido de mobile.de"
+  },
+  "result": {
+    "fuel_gasoline": "Gasolina / GLP",
+    "fuel_diesel": "Diésel",
+    "fuel_electric": "Eléctrico",
+    "fuel_plugin_hybrid": "Híbrido Enchufable",
+    "fuel_hybrid": "Híbrido",
+    "fuel_other": "Otro",
+    "mileage": "Kilometraje",
+    "displacement": "Cilindrada",
+    "fuel": "Combustible",
+    "co2": "Emisiones CO₂",
+    "power": "Potencia",
+    "transmission": "Transmisión",
+    "price": "Precio (origen)",
+    "isv_breakdown": "Desglose del ISV (estimación)",
+    "electric_exempt": "Los vehículos eléctricos están exentos de ISV (€ 0,00)",
+    "displacement_component": "Componente de cilindrada",
+    "environmental_component": "Componente ambiental (CO₂)",
+    "depreciation": "Coeficiente de depreciación ({{year}})",
+    "isv_total": "ISV Estimado",
+    "disclaimer": "Estimación basada en las tablas CISV 2025. El valor final del ISV lo determina la Autoridad Tributaria portuguesa (AT) tras la inspección oficial del vehículo."
+  },
+  "proposal": {
+    "title": "Solicitar Presupuesto",
+    "subtitle": "Rellena el formulario y prepararemos un presupuesto de importación personalizado para ti.",
+    "label_name": "Nombre completo",
+    "placeholder_name": "Juan García",
+    "label_email": "Email",
+    "placeholder_email": "juan@email.com",
+    "label_phone": "Teléfono",
+    "placeholder_phone": "+34 6XX XXX XXX",
+    "label_car_link": "Enlace del coche",
+    "placeholder_car_link": "https://suchen.mobile.de/...",
+    "label_message": "Mensaje",
+    "placeholder_message": "Describe el coche que quieres importar...",
+    "btn_submit": "Enviar Solicitud",
+    "btn_loading": "Enviando…",
+    "error_name": "El nombre es obligatorio",
+    "error_email_required": "El email es obligatorio",
+    "error_email_invalid": "Email inválido",
+    "error_phone": "El teléfono es obligatorio",
+    "error_car_link_required": "El enlace del coche es obligatorio",
+    "error_car_link_invalid": "El enlace debe ser una URL válida",
+    "error_message": "El mensaje es obligatorio"
+  },
+  "success": {
+    "title": "¡Solicitud enviada!",
+    "message": "Hemos recibido tu solicitud de presupuesto y nos pondremos en contacto contigo pronto.",
+    "btn_again": "Enviar otra solicitud"
+  },
+  "footer": {
+    "rights": "© {{year}} Outeiport. Todos los derechos reservados.",
+    "disclaimer": "Los valores de ISV mostrados son estimaciones — el valor final depende de la inspección oficial."
+  },
+  "errors": {
+    "unexpected": "Se produjo un error inesperado.",
+    "generic": "Algo salió mal.",
+    "label": "Error"
+  }
+}

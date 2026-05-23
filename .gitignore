@@ -23,6 +23,7 @@ Thumbs.db
 
 # IDE
 *.code-workspace
+.claude/settings.local.json
 
 # Environment
 .env

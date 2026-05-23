@@ -1,30 +1,32 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function HomePage() {
+  const { t } = useTranslation()
+
   return (
     <div>
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20 px-4">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-            Importa o teu carro da Alemanha sem surpresas
+            {t('home.hero_title')}
           </h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            Cola o link de um anúncio do mobile.de e obtém uma estimativa do ISV de imediato.
-            Sabe o custo total antes de comprar.
+            {t('home.hero_subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <Link
               to="/simulador"
               className="bg-white text-blue-900 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors text-base"
             >
-              Calcular ISV agora
+              {t('home.cta_simulate')}
             </Link>
             <Link
               to="/proposta"
               className="border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-white/10 transition-colors text-base"
             >
-              Pedir proposta
+              {t('home.cta_proposal')}
             </Link>
           </div>
         </div>
@@ -34,24 +36,12 @@ export default function HomePage() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-center text-slate-800 mb-12">
-            Como funciona
+            {t('home.how_it_works')}
           </h2>
           <div className="grid sm:grid-cols-3 gap-8">
-            <Step
-              number="1"
-              title="Encontra o carro"
-              description="Pesquisa no mobile.de e copia o link do anúncio do carro que queres importar."
-            />
-            <Step
-              number="2"
-              title="Simula o ISV"
-              description="Cola o link no simulador. Extraímos as características e calculamos o ISV estimado automaticamente."
-            />
-            <Step
-              number="3"
-              title="Pede uma proposta"
-              description="Queres avançar? Envia-nos os detalhes e preparamos uma proposta completa de importação."
-            />
+            <Step number="1" title={t('home.step1_title')} description={t('home.step1_desc')} />
+            <Step number="2" title={t('home.step2_title')} description={t('home.step2_desc')} />
+            <Step number="3" title={t('home.step3_title')} description={t('home.step3_desc')} />
           </div>
         </div>
       </section>
@@ -60,16 +50,16 @@ export default function HomePage() {
       <section className="bg-slate-50 py-16 px-4 border-t border-slate-100">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
           <FeatureCard
-            title="Simulador ISV"
-            description="Estima o Imposto Sobre Veículos para qualquer carro no mobile.de — gasolina, diesel, híbrido ou elétrico."
-            cta="Abrir simulador"
+            title={t('home.feature_sim_title')}
+            description={t('home.feature_sim_desc')}
+            cta={t('home.feature_sim_cta')}
             to="/simulador"
             accent
           />
           <FeatureCard
-            title="Proposta Completa"
-            description="Recebe uma proposta personalizada com ISV, desalfandegamento, transporte e registo incluídos."
-            cta="Pedir proposta"
+            title={t('home.feature_prop_title')}
+            description={t('home.feature_prop_desc')}
+            cta={t('home.feature_prop_cta')}
             to="/proposta"
           />
         </div>
@@ -78,8 +68,7 @@ export default function HomePage() {
       {/* Disclaimer */}
       <section className="py-8 px-4">
         <p className="text-center text-xs text-slate-400 max-w-xl mx-auto">
-          Os valores de ISV apresentados são estimativas baseadas nas tabelas CISV 2025.
-          O valor final é determinado pela Autoridade Tributária (AT) após inspeção oficial.
+          {t('home.disclaimer')}
         </p>
       </section>
     </div>

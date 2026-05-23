@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="NameRequired" xml:space="preserve"><value>Name is required.</value></data>
+  <data name="EmailRequired" xml:space="preserve"><value>Email is required.</value></data>
+  <data name="EmailInvalid" xml:space="preserve"><value>Invalid email address.</value></data>
+  <data name="PhoneRequired" xml:space="preserve"><value>Phone number is required.</value></data>
+  <data name="PhoneInvalid" xml:space="preserve"><value>Invalid phone number.</value></data>
+  <data name="CarLinkRequired" xml:space="preserve"><value>Car link is required.</value></data>
+  <data name="CarLinkInvalid" xml:space="preserve"><value>Car link must be a valid URL.</value></data>
+  <data name="MessageRequired" xml:space="preserve"><value>Message is required.</value></data>
+  <data name="UrlRequired" xml:space="preserve"><value>URL is required.</value></data>
+  <data name="UrlInvalidMobileDe" xml:space="preserve"><value>Must be a valid mobile.de listing link.</value></data>
+</root>

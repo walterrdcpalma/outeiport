@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import type { ProposalRequest } from '../../../types/api'
 
 interface Props {
@@ -8,57 +9,58 @@ interface Props {
 
 export default function ProposalForm({ onSubmit, isLoading }: Props) {
   const { register, handleSubmit, formState: { errors } } = useForm<ProposalRequest>()
+  const { t } = useTranslation()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <Field label="Nome completo" error={errors.name?.message} required>
+      <Field label={t('proposal.label_name')} error={errors.name?.message} required>
         <input
           type="text"
-          placeholder="João Silva"
+          placeholder={t('proposal.placeholder_name')}
           className="input"
-          {...register('name', { required: 'O nome é obrigatório' })}
+          {...register('name', { required: t('proposal.error_name') })}
         />
       </Field>
 
-      <Field label="Email" error={errors.email?.message} required>
+      <Field label={t('proposal.label_email')} error={errors.email?.message} required>
         <input
           type="email"
-          placeholder="joao@email.com"
+          placeholder={t('proposal.placeholder_email')}
           className="input"
           {...register('email', {
-            required: 'O email é obrigatório',
-            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Email inválido' },
+            required: t('proposal.error_email_required'),
+            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: t('proposal.error_email_invalid') },
           })}
         />
       </Field>
 
-      <Field label="Telefone" error={errors.phone?.message} required>
+      <Field label={t('proposal.label_phone')} error={errors.phone?.message} required>
         <input
           type="tel"
-          placeholder="+351 9XX XXX XXX"
+          placeholder={t('proposal.placeholder_phone')}
           className="input"
-          {...register('phone', { required: 'O telefone é obrigatório' })}
+          {...register('phone', { required: t('proposal.error_phone') })}
         />
       </Field>
 
-      <Field label="Link do carro" error={errors.carLink?.message} required>
+      <Field label={t('proposal.label_car_link')} error={errors.carLink?.message} required>
         <input
           type="url"
-          placeholder="https://suchen.mobile.de/..."
+          placeholder={t('proposal.placeholder_car_link')}
           className="input"
           {...register('carLink', {
-            required: 'O link do carro é obrigatório',
-            validate: (v) => !v || /^https?:\/\/.+/.test(v) || 'O link deve ser um URL válido',
+            required: t('proposal.error_car_link_required'),
+            validate: (v) => !v || /^https?:\/\/.+/.test(v) || t('proposal.error_car_link_invalid'),
           })}
         />
       </Field>
 
-      <Field label="Mensagem" error={errors.message?.message} required>
+      <Field label={t('proposal.label_message')} error={errors.message?.message} required>
         <textarea
           rows={4}
-          placeholder="Descreve o carro que pretendes importar..."
+          placeholder={t('proposal.placeholder_message')}
           className="input resize-none"
-          {...register('message', { required: 'A mensagem é obrigatória' })}
+          {...register('message', { required: t('proposal.error_message') })}
         />
       </Field>
 
@@ -70,10 +72,10 @@ export default function ProposalForm({ onSubmit, isLoading }: Props) {
         {isLoading ? (
           <>
             <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            A enviar…
+            {t('proposal.btn_loading')}
           </>
         ) : (
-          'Enviar Pedido'
+          t('proposal.btn_submit')
         )}
       </button>
     </form>
