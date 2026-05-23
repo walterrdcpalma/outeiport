@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, startTransition } from 'react'
 import { motion, AnimatePresence, type MotionProps } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
@@ -96,7 +96,7 @@ const steps: StepDef[] = [
 
 export default function HowItWorksSection() {
   const [activeStep, setActiveStep] = useState(0)
-  const handleInView = useCallback((index: number) => { setActiveStep(index) }, [])
+  const handleInView = useCallback((index: number) => { startTransition(() => setActiveStep(index)) }, [])
 
   const { num: activeNum, Icon: ActiveIcon } = steps[activeStep]
 
