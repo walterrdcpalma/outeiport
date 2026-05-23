@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import HowItWorksSection from './components/HowItWorksSection'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -44,19 +45,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="bg-dark-surface py-20 px-6 border-t border-dark-border">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-lg font-light text-white/70 text-center mb-14 tracking-wide">
-            {t('home.how_it_works')}
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-12">
-            <Step number="01" title={t('home.step1_title')} description={t('home.step1_desc')} />
-            <Step number="02" title={t('home.step2_title')} description={t('home.step2_desc')} />
-            <Step number="03" title={t('home.step3_title')} description={t('home.step3_desc')} />
-          </div>
-        </div>
-      </section>
+      <HowItWorksSection />
 
       {/* Feature cards */}
       <section className="bg-dark py-20 px-6 border-t border-dark-border">
@@ -86,15 +75,6 @@ export default function HomePage() {
   )
 }
 
-function Step({ number, title, description }: { number: string; title: string; description: string }) {
-  return (
-    <div className="flex flex-col gap-4">
-      <span className="text-xs font-medium text-white/20 tracking-widest">{number}</span>
-      <h3 className="text-sm font-medium text-white/80">{title}</h3>
-      <p className="text-xs text-muted leading-relaxed font-light">{description}</p>
-    </div>
-  )
-}
 
 function FeatureCard({
   title, description, cta, to,
